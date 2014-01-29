@@ -34,9 +34,11 @@
 // });
 
 $(document).ready(function() {
-   $("form").submit(function(event) {
+   $(".grandma").submit(function(event) {
     event.preventDefault();
     $.post( "/grandma", $(this).serialize() );
+    var content = $( data ).find( "#grandma_says" );
+    $( "span" ).empty().append( "Grandma says: ".concat(content.text()) );
   });
 });
 
