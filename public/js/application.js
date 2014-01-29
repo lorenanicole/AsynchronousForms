@@ -34,26 +34,9 @@
 // });
 
 $(document).ready(function() {
-  $( "form" ).submit(function( event ) {
-    // attach event handler to the form
+   $("form").submit(function(event) {
     event.preventDefault();
-    //stop form from normal submission
-    var $form = $(this);
-    var str = $( $form ).serialize();
-    $( "#results" ).text( str );
-    // get values from elements on the page
-    // term = $form.find( "input[name='user_input']" ).val(),
-    url = $form.attr( "action" );
-    // send data via post
-    var posting = $.post( url, str );
-    console.log(posting);
-    // console.log(url);
-    // console.log(posting);
-    // Put the results in a div
-    posting.done(function( data ) {
-    var content = $( data ).find( "#content" );
-    $( "#result" ).empty().append( content );
-    });
+    $.post( "/grandma", $(this).serialize() );
   });
 });
 
